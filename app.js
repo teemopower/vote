@@ -37,9 +37,11 @@ app.post('/users', async (req, res) => {
         await user.save();
         res.status(201).send(user);
     } catch (err) {
+        console.error('Error saving user:', err); // Log error for debugging
         res.status(400).send({ error: err.message });
     }
 });
+
 
 // Start the server on the port from the .env file
 const PORT = process.env.PORT || 3000;
