@@ -1,15 +1,15 @@
-// app.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config();  // Load environment variables
 
 const app = express();
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://jimmykim925:VheMrynrwMG29XIF@cluster0.iiunm.mongodb.net/', {
+// Connect to MongoDB using the environment variable
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -41,8 +41,8 @@ app.post('/users', async (req, res) => {
     }
 });
 
-// Start the server
-const PORT = 3000;
+// Start the server on the port from the .env file
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
