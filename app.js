@@ -1,9 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();  // Load environment variables
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:3000' // Allow localhost:3000 to access the API
+  }));
 
 // Middleware to parse JSON
 app.use(bodyParser.json());
