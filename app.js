@@ -7,7 +7,7 @@ require('dotenv').config();  // Load environment variables
 const app = express();
 
 app.use(cors({
-    origin: 'https://trump2024-fawn.vercel.app' // Allow localhost:3000 to access the API
+    origin: 'http://localhost:3000' // Allow localhost:3000 to access the API
   }));
 
 // Middleware to parse JSON
